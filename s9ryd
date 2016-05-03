@@ -1,4 +1,4 @@
-#Test for only ARM architecture and Ubuntu 14.04.4
+# Test for only ARM architecture and Ubuntu 14.04.4
 #
 # fw_type will always be developer for Mario.
 # Alex and ZGB need the developer BIOS installed though.
