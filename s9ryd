@@ -1,4 +1,4 @@
-# Test for only ARM architecture and Ubuntu 14.04.4
+# Test for only ARM architecture. Markoive seems to have good ideas, I'll try it out. 
 #
 # fw_type will always be developer for Mario.
 # Alex and ZGB need the developer BIOS installed though.
@@ -23,8 +23,8 @@ fi
 
 setterm -blank 0
 
-if [ "$3" != "" ]; then
-  target_disk=$3
+if [ "$1" != "" ]; then
+  target_disk=$1
   echo "Got ${target_disk} as target drive"
   echo ""
   echo "WARNING! All data on this device will be wiped out! Continue at your own risk!"
@@ -193,7 +193,7 @@ then
 fi
 mount -t ext4 ${target_rootfs} /tmp/urfs
 
-tar_file="http://cdimage.ubuntu.com/ubuntu-core/releases/14.04/release/ubuntu-core-$ubuntu_version-core-$ubuntu_arch.tar.gz"
+tar_file="http://cdimage.ubuntu.com/ubuntu-core/releases/$ubuntu_version/release/ubuntu-core-$ubuntu_version-core-$ubuntu_arch.tar.gz"
 if [ $ubuntu_version = "dev" ]
 then
   ubuntu_animal=`wget --quiet -O - http://changelogs.ubuntu.com/meta-release-development | grep "^Dist: " | tail -1 | sed -r 's/^Dist: (.*)$/\1/'`
@@ -288,8 +288,8 @@ current_kernfs_num=$((${current_rootfs: -1:1}-1))
 current_kernfs=${current_rootfs: 0:-1}$current_kernfs_num
 
 vbutil_kernel --repack ${target_kern} \
-    --oldblob $current_kernfs \
-    --keyblock /usr/share/vboot/devkeys/kernel.keyblock \
+  --oldblob $current_kernfs \
+  --keyblock /usr/share/vboot/devkeys/kernel.keyblock \
     --version 1 \
     --signprivate /usr/share/vboot/devkeys/kernel_data_key.vbprivk \
     --config kernel-config \
