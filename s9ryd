@@ -144,7 +144,7 @@ then
   ubuntu_arch="armhf"
   if [ "$ubuntu_metapackage" = "default" ]
   then
-    ubuntu_metapackage="xubuntu-desktop"
+    ubuntu_metapackage="lubuntu-desktop"
   fi
 else
   echo -e "Error: This script doesn't know how to install ChrUbuntu on $chromebook_arch"
